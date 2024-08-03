@@ -2,7 +2,13 @@ import React from 'react'
 
 function Login() {
   return (
-    <div>Login</div>
+    <div className='container'>
+     <div className='container-fluid'>
+        <div className=''>
+          <img></img>
+        </div>
+     </div>
+    </div>
   )
 }
 
