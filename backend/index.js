@@ -2,27 +2,19 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const userModal = require('../backend/Schemas/UserSchema');
+const userRouter = require('./Routes/UserRouter')
 
 mongoose.connect('mongodb://localhost:27017/HotelMSDev').then(()=>{
     console.log('db connected')
-}).catch((err)=>{
+}).catch((err)=>{ 
     console.log(err)
 });
 
 
 app.use(express.json());
-app.use(cors())
-
-app.post("/",(req,res)=>{
-    const data = new userModal({
-        email:req.body.email,
-        name:req.body.name,
-        password:req.body.password
-    })
-    data.save()
-    res.json('data posted successfully')
-})
+app.use(express.urlencoded({extended:true}));
+app.use(cors());
+app.use('/auth',userRouter)
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
