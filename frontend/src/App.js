@@ -1,10 +1,13 @@
-
+import { Route , Routes } from "react-router-dom";
+import Login from "./Components/Login";
+import Register from "./Components/Register";
 function App() {
   return (
-    <div className="App">
-      header
-    </div>
-  );
+   <Routes>
+    <Route path="/login" element={Login}/>
+    <Route path="/register" element={Register}/>      
+   </Routes> 
+  )
 }
 
 export default App;
